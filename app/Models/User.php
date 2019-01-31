@@ -28,14 +28,33 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    function setPasswordAttribute($password){
-        if ($password){
+    // accessors
+    function setPasswordAttribute($password)
+    {
+        if ($password) {
             $this->attributes['password'] = bcrypt($password);
         }
     }
 
-    // accessors
-    function getFullNameAttribute(){
+    function setFirstNameAttribute($firstName)
+    {
+        if ($firstName) {
+            $this->attributes['first_name'] = ucfirst($firstName);
+        }
+    }
+
+    function setLastNameAttribute($lastName)
+    {
+        if ($lastName) {
+            $this->attributes['last_name'] = ucfirst($lastName);
+        }
+    }
+
+    // getters
+
+    //TODO: check for working
+    function getFullNameAttribute()
+    {
         return sprintf('%s %s', $this->first_name, $this->last_name);
     }
 }
