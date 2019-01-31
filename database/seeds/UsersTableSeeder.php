@@ -19,8 +19,10 @@ class UsersTableSeeder extends Seeder
         }
 
         User::create([
-            'name' => 'Example Admin',
-            'email' => 'admin@example.com',
+            'name' => 'administrator',
+            'first_name' => 'Igor',
+            'last_name' => 'Peshkov',
+            'email' => 'admin@laravel-study.loc',
             'password' => '123456q',
         ]);
     }
