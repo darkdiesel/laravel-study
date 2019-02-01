@@ -13,4 +13,6 @@
             @endforelse
         </ul>
     </div>
+
+    <a href="/post/create">Add new post</a>
 @endsection

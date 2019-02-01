@@ -15,4 +15,9 @@ class Post extends Model
      * @var array
      */
     protected $fillable = ['title', 'description', 'user_id'];
+
+    public function setUserIdAttribute($value)
+    {
+        $this->attributes['user_id'] = 1;
+    }
 }
