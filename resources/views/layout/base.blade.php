@@ -17,6 +17,6 @@
     </div>
 
     @include('layout.scripts')
-    @yield('scripts');
+    @yield('scripts')
 </body>
 </html>

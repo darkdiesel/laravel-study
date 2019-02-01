@@ -15,4 +15,11 @@
         <p>No users found.</p>
     @endif
 </div>
+
+@component('components.test-component')
+    <div>
+        <h3>Hi there, from test component</h3>
+    </div>
+@endcomponent
+
 @endsection
