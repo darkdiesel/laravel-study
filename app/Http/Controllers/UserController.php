@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Barryvdh\Debugbar\Twig\Extension\Debug;
-use DebugBar\DebugBar;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,12 +10,12 @@ class UserController extends Controller
 {
     public function show($userId)
     {
-        return view('user.show', compact('userId'));
+        return view('pages.user.show', compact('userId'));
     }
 
     public function all() {
-        $users = DB::table('users')->get();
+        $users = User::all();
 
-        return view('user.all', compact('users'));
+        return view('pages.user.all', compact('users'));
     }
 }

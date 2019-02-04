@@ -59,6 +59,14 @@
 
 * Create model with migration: `php artisan make:model -m`
 
+
+## Storage
+
+* Link storage to public: `php artisan storage:link`
+* Check `config/filesystems.php` for storage configs.
+* Use helper `url()` for building urls.
+* Get url by facade `Storage::disk('public')->url('file.txt')`
+
 ## Composer
 
 * Reset composer autoload file: `composer dump-autoload`
