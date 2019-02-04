@@ -12,7 +12,7 @@
             </ul>
         </div>
     @endif
-    <form action="/post/save" method="post">
+    <form action="{{ route('post_save') }}" method="post">
         @csrf
         <div>
             <label for="">Title</label><br/>
