@@ -18,7 +18,9 @@
 ## Routes
 
 * Add new route in `routes/web.php`
+
 * Display list of routes `php artisan route:list`
+
 * Check route by name in Controller `$request->route()->named('route_name)`
 
 
@@ -57,9 +59,14 @@
 * Run seeders: `php artisan db:seed`
 
 ### Models ###
+
 * Create model: `php artisan make:model`
 
 * Create model with migration: `php artisan make:model -m`
+
+* Solve problem n+1 request `$model::with()`
+
+* Load items where you need `$model->load()`
 
 ### Middleware ###
 
@@ -68,8 +75,11 @@
 ## Storage
 
 * Link storage to public: `php artisan storage:link`
+
 * Check `config/filesystems.php` for storage configs.
+
 * Use helper `url()` for building urls.
+
 * Get url by facade `Storage::disk('public')->url('file.txt')`
 
 ## Composer
