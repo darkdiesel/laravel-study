@@ -18,6 +18,8 @@
 ## Routes
 
 * Add new route in `routes/web.php`
+* Display list of routes `php artisan route:list`
+* Check route by name in Controller `$request->route()->named('route_name)`
 
 
 ## Debugger
@@ -59,6 +61,9 @@
 
 * Create model with migration: `php artisan make:model -m`
 
+### Middleware ###
+
+* Create middleware `php artisan make:middleware MyMiddleware`
 
 ## Storage
 
