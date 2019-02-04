@@ -16,6 +16,10 @@ class Post extends Model
      */
     protected $fillable = ['title', 'description', 'user_id'];
 
+    public function author(){
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
+
     public function setUserIdAttribute($value)
     {
         $this->attributes['user_id'] = 1;
