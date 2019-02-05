@@ -95,6 +95,10 @@
 
 * Get url by facade `Storage::disk('public')->url('file.txt')`
 
+## Localisation
+
+* Setup default locale in `config/app.php` (_locale_, _fallback_locale_)
+
 ## Composer
 
 * Reset composer autoload file: `composer dump-autoload`
