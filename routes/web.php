@@ -35,6 +35,9 @@ Route::group([
     });
 });
 
+//Route::resource('post', 'PostController')->only(['index']);
+//Route::resource('post', 'PostController')->except(['create', 'update', 'destroy']);
+
 Route::group([
     'middleware' => 'auth',
     'prefix' => 'admin',
