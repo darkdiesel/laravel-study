@@ -7,7 +7,7 @@
             <a href="{{ route('users_list') }}">Users</a>
         </li>
         <li>
-            <a href="{{ route('news') }}">News</a>
+            <a href="{{ route('post.index') }}">News</a>
         </li>
     </ul>
 </nav>
