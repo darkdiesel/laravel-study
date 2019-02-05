@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index() {
         $users = User::all();
 
-        return view('pages.user.all', compact(' '));
+        return view('pages.user.index', compact('users'));
     }
 
     public function show($locale, $id)

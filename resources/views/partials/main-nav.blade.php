@@ -8,22 +8,22 @@
     <div class="collapse navbar-collapse" id="mainNavBar">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">Main</a>
+                <a class="nav-link" href="{{ route('home', [app()->getLocale()]) }}">Main</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.index') }}">Users</a>
+                <a class="nav-link" href="{{ route('user.index', [app()->getLocale()]) }}">Users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('post.index') }}">News</a>
+                <a class="nav-link" href="{{ route('post.index', [app()->getLocale()]) }}">News</a>
             </li>
             <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login', [app()->getLocale()]) }}">{{ __('Login') }}</a>
                 </li>
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ route('register', [app()->getLocale()]) }}">{{ __('Register') }}</a>
                     </li>
                 @endif
             @else

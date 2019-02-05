@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Locale
-{
+class Locale {
+
     /**
      * Handle an incoming request.
      *
@@ -30,6 +30,6 @@ class Locale
             app()->setLocale($segment);
         }
 
-        return $next($request);
+        return $next( $request );
     }
 }
