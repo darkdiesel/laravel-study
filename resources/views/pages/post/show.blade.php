@@ -3,7 +3,7 @@
 @section('title', ' | Detail Post')
 
 @section('content')
-    <h1>Show Post</h1>
+    <h1>@lang('post.title.single')</h1>
     <table border="1">
         <thead>
         <tr>
