@@ -3,6 +3,7 @@
 @section('title', ' | News')
 
 @section('content')
+    <h1>Post Create</h1>
     @if($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -12,7 +13,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('post_save') }}" method="post">
+    <form action="{{ route('post.store') }}" method="post">
         @csrf
         <div>
             <label for="">Title</label><br/>

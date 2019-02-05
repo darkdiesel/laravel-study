@@ -11,30 +11,66 @@
 |
 */
 
-Route::get('/', 'IndexController@index')->name('home');
+$optionalLanguageRoutes = function ( \Illuminate\Routing\Router $router ) {
+    Auth::routes();
 
-Route::get('user/all', 'UserController@all')->name('users_list');
+    Route::get( '/', 'IndexController@index' )->name( 'home' );
 
-Route::get('user/{id}', 'UserController@show')->name('user_personal');
+    Route::get( 'user', 'UserController@index' )->name( 'user.index' );
 
-Route::get('news', 'PostController@all')->name('news');
+    Route::get( 'user/{id}',
+        [ 'as' => 'user.show', 'uses' => 'UserController@show' ] );
 
-Route::get('news/{page}', 'PostController@all');
+    Route::group( [
+        'prefix' => 'post',
+        'as'     => 'post.',
+    ],
+        function () {
+            Route::get( '/', 'PostController@index' )->name( 'index' );
+            Route::get( '/{id}', 'PostController@show' )
+                 ->where( 'id', '[0-9]+' )
+                 ->name( 'show' );
 
+            Route::group( [
+                'middleware' => 'auth',
+            ],
+                function () {
+                    Route::get( '/create', 'PostController@create' )
+                         ->name( 'create' );
+                    Route::post( '/', 'PostController@store' )
+                         ->name( 'store' );
+                    Route::get( '/{id}/edit', 'PostController@edit' )
+                         ->where( 'id', '[0-9]+' )
+                         ->name( 'edit' );
+                    Route::put( '/{id}', 'PostController@update' )
+                         ->where( 'id', '[0-9]+' )
+                         ->name( 'update' );
+                    Route::delete( '/{id}', 'PostController@destroy' )
+                         ->where( 'id', '[0-9]+' )
+                         ->name( 'destroy' );
+                } );
+        } );
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/post/create', 'PostController@create')->name('post_create');
-    Route::post('/post/save', 'PostController@save')->name('post_save');
-});
+    //Route::resource('post', 'PostController')->only(['index']);
+    //Route::resource('post', 'PostController')->except(['create', 'update', 'destroy']);
 
+    Route::group( [
+        'middleware' => 'auth',
+        'prefix'     => 'admin',
+        'namespace'  => 'Admin',
+        'as'         => 'admin.',
+    ],
+        function () {
+            Route::get( '/', 'IndexController@all' )->name( 'home' );
+            Route::get( '/users', 'UserController@all' )->name( 'users' );
+            Route::get( '/posts', 'PostController@all' )->name( 'posts' );
+        } );
+};
 
-Route::group([
-    'middleware' => 'auth',
-    'prefix' => 'admin',
-    'namespace' => 'Admin',
-    'as' => 'admin.'
-], function () {
-    Route::get('/', 'IndexController@all')->name('home');
-    Route::get('/users', 'UserController@all')->name('users');
-    Route::get('/posts', 'PostController@all')->name('posts');
-});
+Route::group( [ 'middleware' => 'locale' ], $optionalLanguageRoutes );
+Route::group( [
+    'prefix'     => '{locale?}',
+    'middleware' => 'locale',
+    'where'      => [ 'locale' => 'en|ru' ],
+],
+    $optionalLanguageRoutes );
