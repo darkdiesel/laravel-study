@@ -11,6 +11,12 @@
 
 * Create controller: `php artisan make:controller UserController`
 
+* Create resource controller: `php artisan make:controller UserController --resource`
+
+* Create resource controller and assign to model: `php artisan make:controller UserController --resource  --model=\App\Models\User`
+
+* Add new resource methods before resource route.
+
 ## Views 
 
 * Add new view in `resources/views`
@@ -23,13 +29,18 @@
 
 * Check route by name in Controller `$request->route()->named('route_name)`
 
+## Response 
+
+* Send response with json and status: `response()->json($data, 201)`
+
+* Send response with view and status: `response(view('post.store', 'post'), 201)`
 
 ## Debugger
 
 * Install [debugger-panel for laravel](https://github.com/barryvdh/laravel-debugbar): `composer require barryvdh/laravel-debugbar --dev`
 
 
-## Cache
+ ## Cache
 * Clear cache: `php artisan cache:clear`
 
 ## Database
