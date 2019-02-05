@@ -11,6 +11,19 @@
 |
 */
 
+
+
+//$optionalLanguageRoutes = function() {
+//    // add routes here
+//}
+//
+//Route::group([
+//    'prefix' => '{lang?}', 'where' => ['lang' => 'en|ru']
+//], function(){
+//
+//});
+
+
 Route::prefix('{lang?}')->middleware('locale')->group(function() {
     Auth::routes();
 
@@ -18,7 +31,7 @@ Route::prefix('{lang?}')->middleware('locale')->group(function() {
 
     Route::get('user', 'UserController@index')->name('user.index');
 
-    Route::get('user/{id}', 'UserController@show')->name('user.show');
+    Route::get('user/{id}', ['as' => 'user.show', 'uses' => 'UserController@show']);
 
     Route::group([
         'prefix' => 'post',
