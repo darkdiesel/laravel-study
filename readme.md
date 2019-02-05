@@ -64,9 +64,11 @@
 
 * Create model with migration: `php artisan make:model -m`
 
-* Solve problem n+1 request `$model::with()`
+* Solve problem n+1 request `$model::with()`. Eager Loads
 
-* Load items where you need `$model->load()`
+* Load items where you need `$model->load()`. Lazy Eager Loading
+
+* Polymorphic relationships. `$model->morphMany(); $model->morphTo()`
 
 ### Middleware ###
 
