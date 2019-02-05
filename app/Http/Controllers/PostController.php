@@ -46,10 +46,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  string  $locale
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($locale, $id)
     {
         $post = Post::find($id);
 
@@ -59,10 +60,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  string  $locale
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($locale, $id)
     {
         $post = Post::find($id);
 
@@ -73,10 +75,11 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  string  $locale
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $locale, $id)
     {
         //
     }
@@ -84,10 +87,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  string  $locale
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($locale, $id)
     {
         //
     }

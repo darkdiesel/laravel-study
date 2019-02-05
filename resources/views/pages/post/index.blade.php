@@ -8,7 +8,7 @@
         <h1>News</h1>
         <ul>
             @forelse($posts As $post)
-                <li><a href="{{ route('post.show', $post->id) }}">{{$post->title}}</a></li>
+                <li><a href="{{ route('post.show', [app()->getLocale(), $post->id]) }}">{{$post->title}}</a></li>
             @empty
                 <p>Sorry, but there is no news else.</p>
             @endforelse

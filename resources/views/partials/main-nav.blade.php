@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}">Main</a>
         </li>
         <li>
-            <a href="{{ route('users_list') }}">Users</a>
+            <a href="{{ route('user.index') }}">Users</a>
         </li>
         <li>
             <a href="{{ route('post.index') }}">News</a>

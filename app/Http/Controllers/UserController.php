@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function show($userId)
-    {
-        return view('pages.user.show', compact('userId'));
-    }
-
-    public function all() {
+    public function index() {
         $users = User::all();
 
         return view('pages.user.all', compact('users'));
+    }
+
+    public function show($userId)
+    {
+        return view('pages.user.show', compact('userId'));
     }
 }
