@@ -31,7 +31,6 @@ class PostController extends Controller
 
         Post::create(array_merge($request->all(), ['user_id' => 1]));
 
-
-        return redirect('/news');
+        return redirect(route('news'));
     }
 }

@@ -28,22 +28,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function posts(){
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
     // accessors
-    function setPasswordAttribute($password)
+    public function setPasswordAttribute($password)
     {
         if ($password) {
             $this->attributes['password'] = bcrypt($password);
         }
     }
 
-    function setFirstNameAttribute($firstName)
+    public function setFirstNameAttribute($firstName)
     {
         if ($firstName) {
             $this->attributes['first_name'] = ucfirst($firstName);
         }
     }
 
-    function setLastNameAttribute($lastName)
+    public function setLastNameAttribute($lastName)
     {
         if ($lastName) {
             $this->attributes['last_name'] = ucfirst($lastName);
@@ -51,7 +55,7 @@ class User extends Authenticatable
     }
 
     // getters
-    function getFullNameAttribute()
+    public function getFullNameAttribute()
     {
         return sprintf('%s %s', $this->first_name, $this->last_name);
     }

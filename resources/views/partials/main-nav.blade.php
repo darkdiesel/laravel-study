@@ -1,13 +1,13 @@
 <nav>
     <ul>
         <li>
-            <a href="/">Main</a>
+            <a href="{{ route('home') }}">Main</a>
         </li>
         <li>
-            <a href="/user/all">Users</a>
+            <a href="{{ route('users_list') }}">Users</a>
         </li>
         <li>
-            <a href="/news">News</a>
+            <a href="{{ route('news') }}">News</a>
         </li>
     </ul>
 </nav>

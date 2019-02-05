@@ -8,7 +8,7 @@
     @if(!$users->isEmpty())
         <ul>
             @foreach ($users as $user)
-                <li>This is user {{$user->full_name}}</li>
+                <li>This is user {{$user->full_name}}. Count Posts: {{count($user->posts)}}</li>
             @endforeach
         </ul>
     @else
