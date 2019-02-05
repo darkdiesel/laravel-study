@@ -15,5 +15,5 @@
         </ul>
     </div>
 
-    <a href="{{ route('post.create') }}">Add new post</a>
+    <a class="btn btn-primary" href="{{ route('post.create') }}">Add new post</a>
 @endsection

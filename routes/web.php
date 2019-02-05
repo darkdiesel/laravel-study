@@ -12,6 +12,8 @@
 */
 
 Route::prefix('{lang?}')->middleware('locale')->group(function() {
+    Auth::routes();
+
     Route::get('/', 'IndexController@index')->name('home');
 
     Route::get('user', 'UserController@index')->name('user.index');
@@ -50,8 +52,3 @@ Route::prefix('{lang?}')->middleware('locale')->group(function() {
         Route::get('/posts', 'PostController@all')->name('posts');
     });
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
