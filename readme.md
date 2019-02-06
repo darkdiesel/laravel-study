@@ -37,6 +37,10 @@
 
 * Check route by name in Controller `$request->route()->named('route_name)`
 
+* Get current url `Request::current();`
+
+* Get a section of the url `Request::segment(1);`
+
 ## Response 
 
 * Send response with json and status: `response()->json($data, 201)`
