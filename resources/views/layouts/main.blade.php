@@ -14,7 +14,7 @@
             @yield('content')
         </main>
 
-        <footer>
+        <footer class="bg-light">
             @include('partials.footer')
         </footer>
     </div>
