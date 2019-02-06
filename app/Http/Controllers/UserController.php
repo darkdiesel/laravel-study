@@ -15,10 +15,8 @@ class UserController extends Controller
         return view('pages.user.index', compact('users'));
     }
 
-    public function show($locale, $id)
+    public function show($locale, User $user)
     {
-        $user = User::find($id);
-
         return view('pages.user.show', compact('user'));
     }
 
