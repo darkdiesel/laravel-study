@@ -1,11 +1,6 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    @include('partials.head')
-    @include('partials.styles')
-</head>
-<body>
-<div class="wrapper">
+@extends('layouts.base')
+
+@section('page')
     <header>
         @include('partials.header')
     </header>
@@ -21,8 +16,4 @@
     <footer>
         @include('partials.footer')
     </footer>
-</div>
-
-@include('partials.scripts')
-</body>
-</html>
+@endsection
