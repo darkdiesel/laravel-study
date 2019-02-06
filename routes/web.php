@@ -26,7 +26,7 @@ $optionalLanguageRoutes = function (\Illuminate\Routing\Router $router ) {
     ], function (){
         Route::get( '/', 'UserController@index' )->name( 'index' );
 
-        Route::get( '{id}',
+        Route::get( '{user}',
             [ 'as' => 'show', 'uses' => 'UserController@show' ] );
 
         Route::get( '{id}/edit',
@@ -43,7 +43,7 @@ $optionalLanguageRoutes = function (\Illuminate\Routing\Router $router ) {
     ],
         function () {
             Route::get( '/', 'PostController@index' )->name( 'index' );
-            Route::get( '/{id}', 'PostController@show' )
+            Route::get( '/{post}', 'PostController@show' )
                  ->name( 'show' );
 
             Route::group( [
@@ -75,8 +75,8 @@ $optionalLanguageRoutes = function (\Illuminate\Routing\Router $router ) {
     ],
         function () {
             Route::get( '/', 'IndexController@all' )->name( 'home' );
-            Route::get( '/users', 'UserController@all' )->name( 'users' );
-            Route::get( '/posts', 'PostController@all' )->name( 'posts' );
+            Route::resource( 'users', 'UserController' );
+            Route::resource( 'posts', 'PostController' );
         } );
 };
 
