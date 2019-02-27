@@ -11,24 +11,39 @@
 |
 */
 
-$optionalLanguageRoutes = function ( \Illuminate\Routing\Router $router ) {
+/**
+ * @param \Illuminate\Routing\Router $router
+ */
+$optionalLanguageRoutes = function (\Illuminate\Routing\Router $router ) {
     Auth::routes();
 
     Route::get( '/', 'IndexController@index' )->name( 'home' );
 
-    Route::get( 'user', 'UserController@index' )->name( 'user.index' );
+    // users
+    Route::group([
+        'prefix' => 'user',
+        'as'     => 'user.',
+    ], function (){
+        Route::get( '/', 'UserController@index' )->name( 'index' );
 
-    Route::get( 'user/{id}',
-        [ 'as' => 'user.show', 'uses' => 'UserController@show' ] );
+        Route::get( '{user}',
+            [ 'as' => 'show', 'uses' => 'UserController@show' ] );
 
+        Route::get( '{id}/edit',
+            [ 'as' => 'edit', 'uses' => 'UserController@edit' ] );
+
+        Route::match(['put', 'patch'], '{id}',
+            [ 'as' => 'update', 'uses' => 'UserController@update' ] );
+    });
+
+    // posts
     Route::group( [
         'prefix' => 'post',
         'as'     => 'post.',
     ],
         function () {
             Route::get( '/', 'PostController@index' )->name( 'index' );
-            Route::get( '/{id}', 'PostController@show' )
-                 ->where( 'id', '[0-9]+' )
+            Route::get( '/{post}', 'PostController@show' )
                  ->name( 'show' );
 
             Route::group( [
@@ -40,17 +55,15 @@ $optionalLanguageRoutes = function ( \Illuminate\Routing\Router $router ) {
                     Route::post( '/', 'PostController@store' )
                          ->name( 'store' );
                     Route::get( '/{id}/edit', 'PostController@edit' )
-                         ->where( 'id', '[0-9]+' )
                          ->name( 'edit' );
                     Route::put( '/{id}', 'PostController@update' )
-                         ->where( 'id', '[0-9]+' )
                          ->name( 'update' );
                     Route::delete( '/{id}', 'PostController@destroy' )
-                         ->where( 'id', '[0-9]+' )
                          ->name( 'destroy' );
                 } );
         } );
 
+    //Route::resource('post', 'PostController');
     //Route::resource('post', 'PostController')->only(['index']);
     //Route::resource('post', 'PostController')->except(['create', 'update', 'destroy']);
 
@@ -62,8 +75,8 @@ $optionalLanguageRoutes = function ( \Illuminate\Routing\Router $router ) {
     ],
         function () {
             Route::get( '/', 'IndexController@all' )->name( 'home' );
-            Route::get( '/users', 'UserController@all' )->name( 'users' );
-            Route::get( '/posts', 'PostController@all' )->name( 'posts' );
+            Route::resource( 'users', 'UserController' );
+            Route::resource( 'posts', 'PostController' );
         } );
 };
 

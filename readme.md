@@ -1,5 +1,13 @@
 # Laravel Study Help List
 
+## Table of content
+- [Install](#install)
+- [Controllers](#controllers)
+- [Views](#views)
+- [Authorisation](#authorisation)
+- [Sessions](#sessions)
+- [Composer](#composer)
+
 ## Install 
 * Install laravel globally via composer: `composer global require "laravel/installer"`
 * Create new project: 'laravel new blog'
@@ -29,6 +37,10 @@
 
 * Check route by name in Controller `$request->route()->named('route_name)`
 
+* Get current url `Request::current();`
+
+* Get a section of the url `Request::segment(1);`
+
 ## Response 
 
 * Send response with json and status: `response()->json($data, 201)`
@@ -39,8 +51,7 @@
 
 * Install [debugger-panel for laravel](https://github.com/barryvdh/laravel-debugbar): `composer require barryvdh/laravel-debugbar --dev`
 
-
- ## Cache
+## Cache
 * Clear cache: `php artisan cache:clear`
 
 ## Database
@@ -98,6 +109,35 @@
 ## Localisation
 
 * Setup default locale in `config/app.php` (_locale_, _fallback_locale_)
+
+## Authorisation 
+* Add default laravel authorisation: `php artisan make:auth`
+
+* Check if authorised `Auth::check()`
+
+* Login by credentials `Auth::attempt(['name' => 'vasya', 'password' => '123'])`
+
+* Login using id: `Auth::loginUsingId(1)` 
+
+* Logout user: `Auth::logout()`
+
+## Sessions
+
+* Save value to session `session()->put('key', 'value')` or with helper `session(['key' => 'value'])`
+
+* Get all session values `$request->session()->all();` or `session()->all();`
+
+* Delete session value `session()->forget('key')`
+
+* Delete all session values `session()->flush()`
+
+* Add flash to session `session()->flash('success', 'Message text')`
+
+* Increase all flashes live `session()->reflash()`
+
+* Keep some session value `$request->session()->keep(['username', 'email']);`
+
+* Get session value `session()->get();`
 
 ## Composer
 

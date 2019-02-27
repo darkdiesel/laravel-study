@@ -50,10 +50,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($locale, $id)
+    public function show($locale, Post $post)
     {
-        $post = Post::find($id);
-
         return view('pages.post.show', compact('post'));
     }
 

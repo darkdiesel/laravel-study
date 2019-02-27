@@ -1,24 +1,15 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    @include('partials.head')
-    @include('partials.styles')
-</head>
-<body>
-    <div class="wrapper">
-        <header>
+@extends('layouts.base')
+
+@section('page')
+    <header>
         @include('partials.header')
-        </header>
+    </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
 
-        <footer>
-            @include('partials.footer')
-        </footer>
-    </div>
-
-    @include('partials.scripts')
-</body>
-</html>
+    <footer class="bg-light">
+        @include('partials.footer')
+    </footer>
+@endsection
